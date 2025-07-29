@@ -46,8 +46,16 @@ export default function HomePage() {
         {/* Welcome Section */}
         <WindowFrame title="College Diary - NIFT Jodhpur Orientation 2025">
           <div className="text-center space-y-4">
-            <h1 className="retro-font-display text-2xl md:text-3xl">📸 Share Your Orientation Memories! 📸</h1>
-            <p className="retro-font-primary text-sm md:text-base">
+            <h1 className="text-lg md:text-xl text-center font-bold">
+  Look, if you snapped some half-decent photos on Day One—drop them here. Don’t make a big deal out of it.
+  <br />
+  We might print a few. Maybe frame ’em. Maybe forget ’em.
+  <br />
+  You’re atmosphere here for some mild documentation.
+  <br />
+  Cool? Cool.
+</h1>
+            <p className="retro-font-primary text-xs md:text-sm">
               Upload and view photos from NIFT Jodhpur's orientation week. No registration required - just drag, drop,
               and share!
             </p>
