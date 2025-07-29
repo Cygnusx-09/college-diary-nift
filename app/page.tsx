@@ -4,20 +4,20 @@ import { useState, useEffect, useCallback } from "react" // Added useCallback
 import { WindowFrame } from "@/components/WindowFrame"
 import { PhotoUpload } from "@/components/PhotoUpload"
 import { PhotoGallery } from "@/components/PhotoGallery"
-import { CategoryFilter } from "@/components/CategoryFilter"
+
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
 
 export default function HomePage() {
   const [photos, setPhotos] = useState([])
-  const [selectedCategory, setSelectedCategory] = useState("all")
+  
   const [loading, setLoading] = useState(true)
 
   // Wrap fetchPhotos in useCallback to prevent unnecessary re-creations
   const fetchPhotos = useCallback(async () => {
     try {
       setLoading(true)
-      const response = await fetch(`/api/photos?category=${selectedCategory}&limit=20`)
+      const response = await fetch(`/api/photos?limit=20`)
       const data = await response.json()
       setPhotos(data.photos || [])
     } catch (error) {
@@ -25,7 +25,7 @@ export default function HomePage() {
     } finally {
       setLoading(false)
     }
-  }, [selectedCategory]) // Dependency on selectedCategory
+  }, []) // No dependencies
 
   useEffect(() => {
     fetchPhotos()
@@ -68,10 +68,7 @@ export default function HomePage() {
           <PhotoUpload onUpload={handlePhotoUpload} />
         </WindowFrame>
 
-        {/* Category Filter */}
-        <WindowFrame title="🗂️ Browse by Category">
-          <CategoryFilter selectedCategory={selectedCategory} onCategoryChange={setSelectedCategory} />
-        </WindowFrame>
+        
 
         {/* Photo Gallery */}
         <WindowFrame title="📷 Orientation Gallery" className="gallery-section">
